@@ -10,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <main role="main" id="main-content" class="rvt-container">
+      <%= render "layouts/notice" if notice %>
+      <%= render "layouts/alert" if alert %>
+      <%= yield %>
+    </main>
+    <%= render "layouts/footer" %>
   </body>
 </html>
