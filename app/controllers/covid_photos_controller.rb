@@ -15,6 +15,7 @@ class CovidPhotosController < ApplicationController
   # GET /covid_photos/new
   def new
     @covid_photo = CovidPhoto.new
+    authorize @covid_photo
   end
 
   # GET /covid_photos/1/edit
