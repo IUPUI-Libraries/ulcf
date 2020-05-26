@@ -1,0 +1,52 @@
+<%= form_with(model: covid_photo, local: true) do |form| %>
+  <% if covid_photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(covid_photo.errors.count, "error") %> prohibited this covid_photo from being saved:</h2>
+
+      <ul>
+        <% covid_photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date_taken %>
+    <%= form.date_select :date_taken %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :information %>
+    <%= form.text_area :information %>
+  </div>
+
+  <div class="field">
+    <%= form.label :submit_name %>
+    <%= form.text_field :submit_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :submit_email %>
+    <%= form.text_field :submit_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_topic %>
+    <%= form.text_field :other_topic %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

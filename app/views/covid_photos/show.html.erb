@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date taken:</strong>
+  <%= @covid_photo.date_taken %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @covid_photo.location %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @covid_photo.author %>
+</p>
+
+<p>
+  <strong>Information:</strong>
+  <%= @covid_photo.information %>
+</p>
+
+<p>
+  <strong>Submit name:</strong>
+  <%= @covid_photo.submit_name %>
+</p>
+
+<p>
+  <strong>Submit email:</strong>
+  <%= @covid_photo.submit_email %>
+</p>
+
+<p>
+  <strong>Other topic:</strong>
+  <%= @covid_photo.other_topic %>
+</p>
+
+<%= link_to 'Edit', edit_covid_photo_path(@covid_photo) %> |
+<%= link_to 'Back', covid_photos_path %>

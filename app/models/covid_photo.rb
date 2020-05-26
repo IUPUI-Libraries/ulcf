@@ -1,0 +1,2 @@
+class CovidPhoto < ApplicationRecord
+end
