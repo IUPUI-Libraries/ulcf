@@ -57,4 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Additional Gems
 gem 'devise'
+gem 'net-ldap', '~> 0.16.1'
 gem 'omniauth-cas'
+gem 'pundit'
+gem 'rails_admin', '~> 2.0'
