@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Additional Gems
 gem 'devise'
+gem 'image_processing'
 gem 'net-ldap', '~> 0.16.1'
 gem 'omniauth-cas'
 gem 'pundit'

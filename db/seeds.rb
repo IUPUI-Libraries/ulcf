@@ -10,3 +10,13 @@ Role.destroy_all
 
 Role.create(name: 'admin')
 Role.create(name: 'editor')
+
+Topic.destroy_all
+
+Topic.create(name: 'Working remotely')
+Topic.create(name: 'Attending classes remotely')
+Topic.create(name: 'Practicing social distancing')
+Topic.create(name: 'Surrounding environment')
+Topic.create(name: 'Stay at home activities(recreational, entertaining, etc.)')
+Topic.create(name: 'Signage')
+Topic.create(name: 'Other')
