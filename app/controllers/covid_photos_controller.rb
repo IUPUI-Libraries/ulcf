@@ -26,6 +26,7 @@ class CovidPhotosController < ApplicationController
   # POST /covid_photos.json
   def create
     @covid_photo = CovidPhoto.new(covid_photo_params)
+    # @covid_photo.topics = Topics.find(@params[:topic_ids]) if @params[:topic_ids]
 
     respond_to do |format|
       if @covid_photo.save
@@ -63,13 +64,14 @@ class CovidPhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_covid_photo
-      @covid_photo = CovidPhoto.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def covid_photo_params
-      params.require(:covid_photo).permit(:date_taken, :location, :author, :information, :submit_name, :submit_email, :other_topic)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_covid_photo
+    @covid_photo = CovidPhoto.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def covid_photo_params
+    params.require(:covid_photo).permit(:date_taken, :location, :author, :information, :submit_name, :submit_email, :other_topic, :photo, topic_ids: [])
+  end
 end

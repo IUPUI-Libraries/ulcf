@@ -21,6 +21,20 @@
 </p>
 
 <p>
+  <strong>Topics:</strong>
+  <ul>
+  <% @covid_photo.topics.each do |t| %>
+    <li><%= t.name %></li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Other topic:</strong>
+  <%= @covid_photo.other_topic %>
+</p>
+
+<p>
   <strong>Submit name:</strong>
   <%= @covid_photo.submit_name %>
 </p>
@@ -31,9 +45,9 @@
 </p>
 
 <p>
-  <strong>Other topic:</strong>
-  <%= @covid_photo.other_topic %>
+  <%= image_tag @covid_photo.photo.variant(resize_to_limit: [100, 100]) %>
 </p>
+
 
 <%= link_to 'Edit', edit_covid_photo_path(@covid_photo) %> |
 <%= link_to 'Back', covid_photos_path %>
