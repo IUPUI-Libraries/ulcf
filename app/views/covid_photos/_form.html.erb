@@ -11,54 +11,129 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :date_taken %>
-    <%= form.date_select :date_taken %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
-  </div>
-
-  <div class="field">
-    <%= form.label :information %>
-    <%= form.text_area :information %>
-  </div>
-
-  <div class="field">
-    <%= form.collection_check_boxes :topic_ids, Topic.all, :id, :name do |m| %>
-      <%= m.check_box %> <%= m.label %> </br>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :other_topic %>
-    <%= form.text_field :other_topic %>
-  </div>
-
   <div>
-    <%= form.file_field :photo %>
+    <p>
+     The IUPUI University Library is collecting digital images from anyone
+     affiliated with the IUPUI-campus (students, staff, faculty) for the
+     creation of the digital collection “IUPUI Community: Documenting Life
+     During the Pandemic.” This collection aims to document the impact that the
+     Coronavirus pandemic has made to your daily lives.
+   </p>
   </div>
 
-  <div class="field">
-    <%= form.label :submit_name %>
-    <%= form.text_field :submit_name %>
+  <div class="rvt-box">
+    <div class="rvt-box__header">
+       Images content guidelines
+    </div>
+    <div class="rvt-box__body">
+      <p>What are we looking for?</p>
+      <p>
+        Photographs or screenshots documenting the following topics:
+        <ul>
+          <li>Working or attending classes remotely</li>
+          <li>Interating with others (practicing social distancing)</li>
+          <li>Changes in the environment that surrounds you</li>
+        </ul>
+      </p>
+      <p>
+        Images submitted will undergo a review process and will be added to
+        the collection if approved. Submitting does not guarantee inclusion.
+      </p>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :submit_email %>
-    <%= form.text_field :submit_email %>
+  <div class="rvt-box rvt-m-top-md">
+    <div class="rvt-box__header">
+       Images Information
+    </div>
+    <div class="field rvt-box__body">
+      <div class="field rvt-m-top-md">
+        <%= form.label :date_taken %>
+        <%= form.date_select :date_taken %>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :location %>
+        <%= form.text_field :location %>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :author %>
+        <%= form.text_field :author %>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :information %>
+        <%= form.text_area :information %>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :topics %>
+        <ul class="rvt-plain-list">
+        <%= form.collection_check_boxes :topic_ids, Topic.all, :id, :name do |m| %>
+          <li>
+            <%= m.check_box %> <%= m.label %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :other_topic %>
+        <%= form.text_field :other_topic %>
+      </div>
+    </div>
   </div>
 
+  <div class="rvt-box rvt-m-top-md">
+    <div class="rvt-box__header">
+      Upload File
+    </div>
+    <div class="rvt-box__body">
+      <div class="rvt-file" data-upload="covid_photo_photo">
+        <%= form.file_field :photo,  'aria-describedby': 'file-description' %>
+        <label for="covid_photo_photo" class="rvt-button">
+            <span>Upload a file</span>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                <path fill="currentColor" d="M10.41,1H3.5A1.3,1.3,0,0,0,2.2,2.3V13.7A1.3,1.3,0,0,0,3.5,15h9a1.3,1.3,0,0,0,1.3-1.3V4.39ZM11.8,5.21V6H9.25V3h.34ZM4.2,13V3h3V6.75A1.25,1.25,0,0,0,8.5,8h3.3v5Z"/>
+            </svg>
+        </label>
+        <div class="rvt-file__preview" data-file-preview="covid_photo_photo" id="file-description">
+            No file selected
+        </div>
+      </div>
+    </div>
 
 
-  <div class="actions">
-    <%= form.submit %>
+
+  </div>
+
+  <div class="rvt-box rvt-m-top-md">
+    <div class="rvt-box__header">
+       IUPUI University Library Publishing Agreement
+    </div>
+    <div class="rvt-box__body">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Sit amet commodo nulla facilisi nullam vehicula. Senectus et netus
+        et malesuada fames. Sed ullamcorper morbi tincidunt ornare massa.
+        Lectus mauris ultrices eros in.
+      </p>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :submit_name %>
+        <%= form.text_field :submit_name %>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :submit_email %>
+        <%= form.text_field :submit_email %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions rvt-m-top-md">
+    <%= form.submit "Submit Photo", class: "rvt-button" %>
   </div>
 <% end %>
