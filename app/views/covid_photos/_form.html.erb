@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'covid_photos' %>
 <%= form_with(model: covid_photo, local: true) do |form| %>
   <% if covid_photo.errors.any? %>
     <div id="error_explanation">
@@ -80,7 +81,7 @@
         </ul>
       </div>
 
-      <div class="field rvt-m-top-md">
+      <div id="other-topic_div" class="field rvt-m-top-md" <%= other_display(covid_photo.topic_ids) %>>
         <%= form.label :other_topic %>
         <%= form.text_field :other_topic %>
       </div>
