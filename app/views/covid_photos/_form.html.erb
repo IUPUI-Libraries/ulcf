@@ -49,7 +49,9 @@
     <div class="field rvt-box__body">
       <div class="field rvt-m-top-md">
         <%= form.label :date_taken %>
-        <%= form.date_select :date_taken %>
+        <div id="covid-date-field">
+          <%= form.date_select :date_taken, order: [:month, :day, :year], start_year: 2019, end_year: 2022 %>
+        </div>
       </div>
 
       <div class="field rvt-m-top-md">
@@ -121,19 +123,21 @@
         Lectus mauris ultrices eros in.
       </p>
 
-      <div class="field rvt-m-top-md">
-        <%= form.label :submit_name %>
-        <%= form.text_field :submit_name %>
-      </div>
+      <div class="rvt-grid">
+        <div class="field rvt-m-top-md rvt-grid__item">
+          <%= form.label "Name" %>
+          <%= form.text_field :submit_name %>
+        </div>
 
-      <div class="field rvt-m-top-md">
-        <%= form.label :submit_email %>
-        <%= form.text_field :submit_email %>
+        <div class="field rvt-m-top-md rvt-grid__item">
+          <%= form.label "Email" %>
+          <%= form.text_field :submit_email %>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="actions rvt-m-top-md">
-    <%= form.submit "Submit Photo", class: "rvt-button" %>
+    <%= form.submit "Submit", class: "rvt-button" %>
   </div>
 <% end %>
