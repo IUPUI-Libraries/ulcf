@@ -72,3 +72,5 @@ div.actions {
 
 label {
   display: block; }
+
+label.required:after{content:" *"}

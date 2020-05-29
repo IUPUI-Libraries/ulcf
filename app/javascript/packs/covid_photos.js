@@ -7,7 +7,6 @@ $(document).ready(function(){
     $("#other-topic_div").show();
   }
 
-
   covid_other.click(function(){
     if(this.checked){
       $("#other-topic_div").show("slow");
