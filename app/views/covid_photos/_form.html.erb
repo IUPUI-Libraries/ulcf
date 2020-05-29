@@ -49,29 +49,29 @@
     </div>
     <div class="field rvt-box__body">
       <div class="field rvt-m-top-md">
-        <%= form.label :date_taken %>
+        <%= form.label :date_taken, class: 'required'  %>
         <div id="covid-date-field">
           <%= form.date_select :date_taken, order: [:month, :day, :year], start_year: 2019, end_year: 2022 %>
         </div>
       </div>
 
       <div class="field rvt-m-top-md">
-        <%= form.label :location %>
+        <%= form.label :location, class: 'required' %>
         <%= form.text_field :location %>
       </div>
 
       <div class="field rvt-m-top-md">
-        <%= form.label :author %>
+        <%= form.label :author, class: 'required' %>
         <%= form.text_field :author %>
       </div>
 
       <div class="field rvt-m-top-md">
-        <%= form.label :information %>
+        <%= form.label :information, class: 'required' %>
         <%= form.text_area :information %>
       </div>
 
       <div class="field rvt-m-top-md">
-        <%= form.label :topics %>
+        <%= form.label :topics, class: 'required' %>
         <ul class="rvt-plain-list">
         <%= form.collection_check_boxes :topic_ids, Topic.all, :id, :name do |m| %>
           <li>
@@ -96,7 +96,7 @@
       <div class="rvt-file" data-upload="covid_photo_photo">
         <%= form.file_field :photo,  'aria-describedby': 'file-description' %>
         <label for="covid_photo_photo" class="rvt-button">
-            <span>Upload a file</span>
+            <span>Upload a file*</span>
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                 <path fill="currentColor" d="M10.41,1H3.5A1.3,1.3,0,0,0,2.2,2.3V13.7A1.3,1.3,0,0,0,3.5,15h9a1.3,1.3,0,0,0,1.3-1.3V4.39ZM11.8,5.21V6H9.25V3h.34ZM4.2,13V3h3V6.75A1.25,1.25,0,0,0,8.5,8h3.3v5Z"/>
             </svg>
@@ -126,16 +126,20 @@
 
       <div class="rvt-grid">
         <div class="field rvt-m-top-md rvt-grid__item">
-          <%= form.label "Name" %>
+          <%= form.label "Name", class: 'required' %>
           <%= form.text_field :submit_name %>
         </div>
 
         <div class="field rvt-m-top-md rvt-grid__item">
-          <%= form.label "Email" %>
+          <%= form.label "Email", class: 'required' %>
           <%= form.text_field :submit_email %>
         </div>
       </div>
     </div>
+  </div>
+
+  <div>
+    <p><strong>* Required Fields</strong></p>
   </div>
 
   <div class="actions rvt-m-top-md">
