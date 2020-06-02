@@ -22,4 +22,8 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  host: <%= Rails.application.credentials.database[:host] %>
+  database: <%= Rails.application.credentials.database[:name] %>
+  username: <%= Rails.application.credentials.database[:user] %>
+  password: <%= Rails.application.credentials.database[:pass] %>
