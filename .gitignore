@@ -40,3 +40,5 @@ yarn-debug.log*
 
 #
 .browserslistrc
+
+/config/credentials/production.key
