@@ -28,6 +28,8 @@ class User < ApplicationRecord
   end
 
   def self.make_admin(user)
+    return if user.admin?
+
     admin = Role.find_by(name: 'admin')
     admin.users << user
     admin.save

@@ -1,5 +1,10 @@
 <h1 class="rvt-m-top-md">COVID-19 Digital Collection Project Submission Form</h1>
 
-<%= render 'form', covid_photo: @covid_photo %>
-
-<%#= link_to 'Back', covid_photos_path %>
+<% if current_user %>
+  <%= render 'form', covid_photo: @covid_photo %>
+<% else %>
+  <div>
+    <p>Please authenticate before submitting photo.</p>
+    <a href="/users/auth/cas" class="rvt-button rvt-button--primary">IU Login</a>
+  </div>
+<% end %>

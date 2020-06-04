@@ -7,7 +7,6 @@ class CovidPhotoPolicy < ApplicationPolicy
   end
 
   def new?
-    @user.admin?
+    true
   end
-
 end
