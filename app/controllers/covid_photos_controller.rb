@@ -1,5 +1,6 @@
 class CovidPhotosController < ApplicationController
   before_action :set_covid_photo, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :new]
 
   # GET /covid_photos
   # GET /covid_photos.json
