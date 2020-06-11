@@ -12,37 +12,6 @@
     </div>
   <% end %>
 
-  <div>
-    <p>
-     The IUPUI University Library is collecting digital images from anyone
-     affiliated with the IUPUI-campus (students, staff, faculty) for the
-     creation of the digital collection “IUPUI Community: Documenting Life
-     During the Pandemic.” This collection aims to document the impact that the
-     Coronavirus pandemic has made to your daily lives.
-   </p>
-  </div>
-
-  <div class="rvt-box">
-    <div class="rvt-box__header">
-       Images content guidelines
-    </div>
-    <div class="rvt-box__body">
-      <p>What are we looking for?</p>
-      <p>
-        Photographs or screenshots documenting the following topics:
-        <ul>
-          <li>Working or attending classes remotely</li>
-          <li>Interating with others (practicing social distancing)</li>
-          <li>Changes in the environment that surrounds you</li>
-        </ul>
-      </p>
-      <p>
-        Images submitted will undergo a review process and will be added to
-        the collection if approved. Submitting does not guarantee inclusion.
-      </p>
-    </div>
-  </div>
-
   <div class="rvt-box rvt-m-top-md">
     <div class="rvt-box__header">
        Images Information
@@ -57,17 +26,17 @@
 
       <div class="field rvt-m-top-md">
         <%= form.label :location, class: 'required' %>
-        <%= form.text_field :location %>
+        <%= form.text_field :location, placeholder: true %>
       </div>
 
       <div class="field rvt-m-top-md">
         <%= form.label :author, class: 'required' %>
-        <%= form.text_field :author %>
+        <%= form.text_field :author, placeholder: true %>
       </div>
 
       <div class="field rvt-m-top-md">
         <%= form.label :information, class: 'required' %>
-        <%= form.text_area :information %>
+        <%= form.text_area :information, placeholder: true %>
       </div>
 
       <div class="field rvt-m-top-md">
