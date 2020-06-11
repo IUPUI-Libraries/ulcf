@@ -34,10 +34,10 @@ en:
   helpers:
     label:
       covid_photo:
-        date_taken: "When was the image (photo/screenshot) created?"
-        location: "Where was the image (photo/screenshot) created?"
+        date_taken: "When was the image (photo/screenshot) taken?"
+        location: "Where was the image (photo/screenshot) taken?"
         author: "Who took the image (photo/screenshot)?"
-        information: "Provide some context for the image."
+        information: "Provide a description for the image (photo/screenshot)."
         topics: "Choose the topics reflected in the image."
         submit_name: "Name"
         submit_email: "Email"
@@ -45,4 +45,4 @@ en:
       covid_photo:
         location: "City, County, State, Country"
         author: "Last Name, First Name  ( name of the person responsible for taking the photo / screenshot )"
-        information: "Can you provide any individuals, landmarks, etc.?"
+        information: "Include the names of people, landmarks, events represented, etc."
