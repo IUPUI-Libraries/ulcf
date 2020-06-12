@@ -3,7 +3,8 @@ class CreateCovidPhotos < ActiveRecord::Migration[6.0]
     create_table :covid_photos do |t|
       t.date :date_taken
       t.string :location
-      t.string :author
+      t.string :author_first
+      t.string :author_last
       t.text :information
       t.string :submit_name
       t.string :submit_email

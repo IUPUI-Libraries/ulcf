@@ -37,12 +37,17 @@ en:
         date_taken: "When was the image (photo/screenshot) taken?"
         location: "Where was the image (photo/screenshot) taken?"
         author: "Who took the image (photo/screenshot)?"
+        author_first: "First Name"
+        author_last: "Last Name"
         information: "Provide a description for the image (photo/screenshot)."
         topics: "Choose the topics reflected in the image."
+        other_topic: "Other Topic"
         submit_name: "Name"
         submit_email: "Email"
     placeholder:
       covid_photo:
         location: "City, County, State, Country"
-        author: "Last Name, First Name  ( name of the person responsible for taking the photo / screenshot )"
+        author: "Name of the person responsible for taking the photo / screenshot"
+        author_first: "Robert F. Jr."
+        author_last: "Smith"
         information: "Include the names of people, landmarks, events represented, etc."

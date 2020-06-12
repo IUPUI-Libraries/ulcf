@@ -45,7 +45,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_185304) do
   create_table "covid_photos", force: :cascade do |t|
     t.date "date_taken"
     t.string "location"
-    t.string "author"
+    t.string "author_first"
+    t.string "author_last"
     t.text "information"
     t.string "submit_name"
     t.string "submit_email"
