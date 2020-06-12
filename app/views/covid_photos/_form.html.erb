@@ -29,12 +29,23 @@
         <%= form.text_field :location, placeholder: true %>
       </div>
 
-      <div class="field rvt-m-top-md">
-        <%= form.label :author, class: 'required' %>
-        <%= form.text_field :author, placeholder: true %>
+      <div class="rvt-m-top-md">
+        <%= form.label :author %>
       </div>
 
-      <div class="field rvt-m-top-md">
+      <div class="rvt-grid">
+        <div class="field  rvt-grid__item">
+          <%= form.label :author_first, class: 'required' %>
+          <%= form.text_field :author_first, placeholder: true %>
+        </div>
+
+        <div class="field  rvt-grid__item">
+          <%= form.label :author_last, class: 'required' %>
+          <%= form.text_field :author_last, placeholder: true %>
+        </div>
+      </div>
+
+      <div class="field rvt-m-top-md rvt-grid__item">
         <%= form.label :information, class: 'required' %>
         <%= form.text_area :information, placeholder: true %>
       </div>

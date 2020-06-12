@@ -73,6 +73,6 @@ class CovidPhotosController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def covid_photo_params
-    params.require(:covid_photo).permit(:date_taken, :location, :author, :information, :submit_name, :submit_email, :other_topic, :photo, topic_ids: [])
+    params.require(:covid_photo).permit(:date_taken, :location, :author_first, :author_last, :information, :submit_name, :submit_email, :other_topic, :photo, topic_ids: [])
   end
 end

@@ -1,27 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<h1>COVID-19 Digital Collection Project</h1>
+<h2><%= "Submission ID: #{@covid_photo.id}" %></h2>
+
 <p>
-  <strong>Date taken:</strong>
+  <strong><%= I18n.t 'helpers.label.covid_photo.date_taken' %></strong>
   <%= @covid_photo.date_taken %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong><%= I18n.t 'helpers.label.covid_photo.location' %></strong>
   <%= @covid_photo.location %>
 </p>
 
 <p>
-  <strong>Author:</strong>
-  <%= @covid_photo.author %>
+  <strong><%= I18n.t 'helpers.label.covid_photo.author' %></strong>
+  <%= "#{@covid_photo.author_last}, #{@covid_photo.author_first}" %>
 </p>
 
 <p>
-  <strong>Information:</strong>
+  <strong><%= I18n.t 'helpers.label.covid_photo.information' %></strong>
   <%= @covid_photo.information %>
 </p>
 
 <p>
-  <strong>Topics:</strong>
+  <strong><%= I18n.t 'helpers.label.covid_photo.topics' %></strong>
   <ul>
   <% @covid_photo.topics.each do |t| %>
     <li><%= t.name %></li>
@@ -30,17 +33,17 @@
 </p>
 
 <p>
-  <strong>Other topic:</strong>
+  <strong><%= I18n.t 'helpers.label.covid_photo.other_topic' %></strong>
   <%= @covid_photo.other_topic %>
 </p>
 
 <p>
-  <strong>Submit name:</strong>
+  <strong><%= I18n.t 'helpers.label.covid_photo.submit_name' %></strong>
   <%= @covid_photo.submit_name %>
 </p>
 
 <p>
-  <strong>Submit email:</strong>
+  <strong><%= I18n.t 'helpers.label.covid_photo.submit_email' %></strong>
   <%= @covid_photo.submit_email %>
 </p>
 
@@ -49,5 +52,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_covid_photo_path(@covid_photo) %> |
-<%= link_to 'Back', covid_photos_path %>
+<%= link_to 'Submit Another Photo', new_covid_photo_path(), class: "rvt-button rvt-button__primary" %>
