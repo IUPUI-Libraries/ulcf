@@ -31,7 +31,7 @@ class CovidPhotosController < ApplicationController
 
     respond_to do |format|
       if @covid_photo.save
-        format.html { redirect_to @covid_photo, notice: 'Covid photo was successfully created.' }
+        format.html { redirect_to @covid_photo, notice: 'Thank you for your submission!' }
         format.json { render :show, status: :created, location: @covid_photo }
       else
         format.html { render :new }

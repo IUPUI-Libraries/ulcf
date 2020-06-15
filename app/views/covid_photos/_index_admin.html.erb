@@ -1,14 +1,14 @@
 <table>
   <thead>
     <tr>
-      <th>Date taken</th>
-      <th>Location</th>
-      <th>Author</th>
-      <th>Information</th>
-      <th>Submit name</th>
-      <th>Submit email</th>
-      <th>Other topic</th>
-      <th colspan="3"></th>
+      <th><%= I18n.t 'helpers.label.covid_photo.date_taken' %></th>
+      <th><%= I18n.t 'helpers.label.covid_photo.location' %></th>
+      <th><%= I18n.t 'helpers.label.covid_photo.author' %></th>
+      <th><%= I18n.t 'helpers.label.covid_photo.information' %></th>
+      <th><%= I18n.t 'helpers.label.covid_photo.other_topic' %></th>
+      <th><%= I18n.t 'helpers.label.covid_photo.submit_name' %></th>
+      <th><%= I18n.t 'helpers.label.covid_photo.submit_email' %></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -17,14 +17,16 @@
       <tr>
         <td><%= covid_photo.date_taken %></td>
         <td><%= covid_photo.location %></td>
-        <td><%= covid_photo.author %></td>
+        <td><%= "#{covid_photo.author_last}, #{covid_photo.author_first}" %></td>
         <td><%= covid_photo.information %></td>
+        <td><%= covid_photo.other_topic %></td>
         <td><%= covid_photo.submit_name %></td>
         <td><%= covid_photo.submit_email %></td>
-        <td><%= covid_photo.other_topic %></td>
-        <td><%= link_to 'Show', covid_photo %></td>
-        <td><%= link_to 'Edit', edit_covid_photo_path(covid_photo) %></td>
-        <td><%= link_to 'Destroy', covid_photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', covid_photo, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+          <%= link_to 'Edit', edit_covid_photo_path(covid_photo), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+          <%= link_to 'Destroy', covid_photo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Covid Photo', new_covid_photo_path %>
+<%= link_to 'New Covid Photo', new_covid_photo_path, class: 'rvt-button rvt-button__primary' %>
