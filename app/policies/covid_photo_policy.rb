@@ -9,4 +9,22 @@ class CovidPhotoPolicy < ApplicationPolicy
   def new?
     true
   end
+
+  def edit?
+    return true if @user.admin? || @user.editor?
+
+    false
+  end
+
+  def show?
+    return true if @user.admin? || @covid_photo.user == @user
+
+    false
+  end
+
+  def destroy?
+    return true if @user.admin?
+
+    false
+  end
 end
