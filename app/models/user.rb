@@ -27,6 +27,10 @@ class User < ApplicationRecord
     role?(:admin)
   end
 
+  def editor?
+    role?(:editor)
+  end
+
   def self.make_admin(user)
     return if user.admin?
 

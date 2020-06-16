@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_185304) do
+ActiveRecord::Schema.define(version: 2020_06_16_133210) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_185304) do
     t.string "other_topic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_covid_photos_on_user_id"
   end
 
   create_table "covid_photos_topics", id: false, force: :cascade do |t|
@@ -93,4 +95,5 @@ ActiveRecord::Schema.define(version: 2020_05_27_185304) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
+  add_foreign_key "covid_photos", "users"
 end
