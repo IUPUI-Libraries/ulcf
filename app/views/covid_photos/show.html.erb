@@ -46,8 +46,9 @@
 </p>
 
 <p>
-  <%= image_tag @covid_photo.photo.variant(resize_to_limit: [100, 100]) %>
+  <a href="<%= rails_blob_url(@covid_photo.photo) %>">
+    <%= image_tag @covid_photo.photo.variant(resize_to_limit: [100, 100]) %>
+  </a>
 </p>
-
 
 <%= link_to 'Submit Another Photo', new_covid_photo_path(), class: "rvt-button rvt-button__primary" %>
