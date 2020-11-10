@@ -2,10 +2,12 @@ class CovidPhotosController < ApplicationController
   before_action :set_covid_photo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :new]
 
+  include Pagy::Backend
+
   # GET /covid_photos
   # GET /covid_photos.json
   def index
-    @covid_photos = CovidPhoto.all
+    @pagy, @covid_photos = pagy(CovidPhoto.all)
   end
 
   # GET /covid_photos/1

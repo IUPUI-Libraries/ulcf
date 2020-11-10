@@ -35,3 +35,8 @@
 <br>
 
 <%= link_to 'New Covid Photo', new_covid_photo_path, class: 'rvt-button rvt-button__primary' %>
+
+<div class="rvt-m-top-md">
+  <%== pagy_info(@pagy) %>
+  <%== render '/pagy/nav', locals: {pagy: @pagy} %>
+</div>
