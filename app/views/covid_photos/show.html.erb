@@ -1,54 +1,55 @@
 <h1>COVID-19 Digital Collection Project</h1>
 <h2><%= "Submission ID: #{@covid_photo.id}" %></h2>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.date_taken' %></strong>
-  <%= @covid_photo.date_taken %>
-</p>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.location' %></strong>
-  <%= @covid_photo.location %>
-</p>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.author' %></strong>
-  <%= "#{@covid_photo.author_last}, #{@covid_photo.author_first}" %>
-</p>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.information' %></strong>
-  <%= @covid_photo.information %>
-</p>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.topics' %></strong>
-  <ul>
-  <% @covid_photo.topics.each do |t| %>
-    <li><%= t.name %></li>
-  <% end %>
-  </ul>
-</p>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.other_topic' %></strong>
-  <%= @covid_photo.other_topic %>
-</p>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.submit_name' %></strong>
-  <%= @covid_photo.submit_name %>
-</p>
-
-<p>
-  <strong><%= I18n.t 'helpers.label.covid_photo.submit_email' %></strong>
-  <%= @covid_photo.submit_email %>
-</p>
-
 <p>
   <a href="<%= rails_blob_url(@covid_photo.photo) %>">
-    <%= image_tag @covid_photo.photo.variant(resize_to_limit: [100, 100]) %>
+    <%= image_tag @covid_photo.photo.variant(resize_to_limit: [200, 200]) %>
   </a>
 </p>
+<table id="covid-photo-table" class="rvt-table-stripes">
+  <caption class="sr-only">Covid Photo Information</caption>
+  <tbody>
+    <tr>
+      <th><%= I18n.t 'helpers.label.covid_photo.date_taken' %></th>
+      <td><%= @covid_photo.date_taken %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.covid_photo.location' %></th>
+      <td><%= @covid_photo.location %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.covid_photo.author' %></th>
+      <td><%= "#{@covid_photo.author_last}, #{@covid_photo.author_first}" %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.covid_photo.information' %></th>
+      <td><%= @covid_photo.information %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.covid_photo.topics' %></th>
+      <td>
+        <ul>
+        <% @covid_photo.topics.each do |t| %>
+          <li><%= t.name %></li>
+        <% end %>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.covid_photo.other_topic' %></th>
+      <td><%= @covid_photo.other_topic %></td>
+    </tr>
+    <tr>
+      <th>Signature</th>
+      <td><%= @covid_photo.submit_name %> (<%= @covid_photo.submit_email %>)</td>
+    </tr>
+  </tbody>
+</table>
 
-<%= link_to 'Submit Another Photo', new_covid_photo_path(), class: "rvt-button rvt-button__primary" %>
+<div class="rvt-p-top-md">
+  <% if current_user && current_user.admin? %>
+    <%= link_to 'Edit', edit_covid_photo_path(@covid_photo), class: 'rvt-button' %>
+    <%= link_to 'Destroy', @covid_photo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'rvt-button rvt-button--secondary' %>
+  <% else %>
+    <%= link_to 'Submit Another Photo', new_covid_photo_path(), class: "rvt-button rvt-button__primary" %>
+  <% end %>
+</div>

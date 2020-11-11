@@ -2,10 +2,19 @@ class CovidPhotosController < ApplicationController
   before_action :set_covid_photo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :new]
 
+  include Pagy::Backend
+
   # GET /covid_photos
   # GET /covid_photos.json
   def index
-    @covid_photos = CovidPhoto.all
+    @q = CovidPhoto.ransack(params[:q])
+    @all_covid_photos = @q.result
+    @pagy, @covid_photos = pagy(@all_covid_photos)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @all_covid_photos.to_csv, filename: "covid-photos-export-#{Date.today}.csv"}
+    end
   end
 
   # GET /covid_photos/1

@@ -1,37 +1,77 @@
+<div id="covid-filters">
+  <div class="rvt-box">
+    <div class="rvt-box__header">
+      Filters
+    </div>
+    <div class="rvt-box__body">
+      <%= search_form_for @q do |f| %>
+      <div class="rvt-grid">
+        <div class="rvt-grid__item-md">
+          <%= f.label 'Submitter' %>
+          <%= f.search_field :user_uid_eq %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label 'Date (or newer)' %>
+          <%= f.search_field :date_taken_gteq %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label 'Topic' %>
+          <%= f.select :topics_name_cont, options_from_collection_for_select(Topic.all, 'name', 'name'), include_blank: true %>
+        </div>
+        <div class="rvt-grid__item">
+          <%= f.submit "Filter", class: "rvt-button rvt-m-top-md" %>
+          <%= link_to 'Reset', covid_photos_path, class: 'rvt-button rvt-button--secondary rvt-m-top-md' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <table>
   <thead>
     <tr>
-      <th><%= I18n.t 'helpers.label.covid_photo.date_taken' %></th>
-      <th><%= I18n.t 'helpers.label.covid_photo.location' %></th>
-      <th><%= I18n.t 'helpers.label.covid_photo.author' %></th>
-      <th><%= I18n.t 'helpers.label.covid_photo.information' %></th>
+      <th>Photo</th>
+      <th><%= sort_link(@q, :date_taken, 'Date') %></th>
+      <th><%= sort_link(@q, 'user_uid', 'Submitter') %></th>
+      <th><%= sort_link(@q, :location, 'Where') %></th>
+      <th><%= sort_link(@q, :author_last, 'Who') %></th>
+      <th><%= t('Topics') %></th>
       <th><%= I18n.t 'helpers.label.covid_photo.other_topic' %></th>
-      <th><%= I18n.t 'helpers.label.covid_photo.submit_name' %></th>
-      <th><%= I18n.t 'helpers.label.covid_photo.submit_email' %></th>
-      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @covid_photos.each do |covid_photo| %>
       <tr>
+        <td>
+          <%= link_to image_tag(covid_photo.photo.variant(resize_to_limit: [50, 50])), covid_photo, class: 'cp_index_photo' %>
+        </td>
         <td><%= covid_photo.date_taken %></td>
+        <td><%= covid_photo.user.uid %></td>
         <td><%= covid_photo.location %></td>
         <td><%= "#{covid_photo.author_last}, #{covid_photo.author_first}" %></td>
-        <td><%= covid_photo.information %></td>
+        <td><%= covid_photo.topics.map(&:name).join(", ") %></td>
         <td><%= covid_photo.other_topic %></td>
-        <td><%= covid_photo.submit_name %></td>
-        <td><%= covid_photo.submit_email %></td>
-        <td>
-          <%= link_to 'Show', covid_photo, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
-          <%= link_to 'Edit', edit_covid_photo_path(covid_photo), class: 'rvt-button rvt-button--secondary rvt-button--small' %>
-          <%= link_to 'Destroy', covid_photo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'rvt-button rvt-button--secondary rvt-button--small' %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<br/>
+
+<div>
+  <%= link_to covid_photos_path(request.parameters.merge({format: :csv})), class: 'rvt-button' do %>
+    <%= fa_icon 'download', text: '&nbsp; Export Data'.html_safe %>
+  <% end %>
+</div>
+
+
+<div class="rvt-m-top-md">
+  <%== pagy_info(@pagy) %>
+  <%== render '/pagy/nav', locals: {pagy: @pagy} %>
+</div>
+
+<br/>
 
 <%= link_to 'New Covid Photo', new_covid_photo_path, class: 'rvt-button rvt-button__primary' %>
