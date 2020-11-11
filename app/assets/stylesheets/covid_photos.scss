@@ -21,3 +21,11 @@
 #covid_photo_date_taken_1i {
   width:25%;
 }
+
+.cp_index_photo img{
+  margin: 2px;
+}
+.cp_index_photo:hover img{
+  margin: 0px;
+  border: 2px solid #999999;
+}
