@@ -18,7 +18,7 @@ class CovidPhoto < ApplicationRecord
   def copy_file(file_path)
     file_path << '/' unless file_path.end_with?('/)')
     photo.open do |file|
-      FileUtils.cp file.path, "/Users/andjsmit/Projects/rails/ulcf/tmp/test/#{file_name}"
+      FileUtils.cp file.path, "#{file_path}#{file_name}"
     end
     photo
   end
