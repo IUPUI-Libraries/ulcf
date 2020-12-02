@@ -1,0 +1,43 @@
+<%= form_with(model: photo_usage, local: true) do |form| %>
+  <% if photo_usage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo_usage.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+        <% photo_usage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="rvt-box rvt-m-top-md">
+    <div class="rvt-box__header">
+       Photo Usage Permission
+    </div>
+    <div class="field rvt-box__body">
+
+      <div class="field rvt-m-top-md">
+        <%= form.file_field :photos, accept: 'image/png,image/gif,image/jpeg,image/jpg', multiple: true %>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <ul class="rvt-inline-list">
+          <li class="rvt-checkbox-wrapper">
+            <%= form.check_box :acknowledgement %>
+            <%= form.label :acknowledgement %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="field rvt-m-top-md">
+        <%= form.label :signature %>
+        <%= form.text_field :signature %>
+      </div>
+
+      <div class="actions rvt-m-top-md">
+        <%= form.submit "Submit", class: "rvt-button" %>
+      </div>
+    </div>
+  </div>
+<% end %>

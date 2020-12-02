@@ -1,0 +1,10 @@
+<h1 class="rvt-m-top-md">Photo Usage Submission Form</h1>
+
+<% if current_user %>
+  <%= render 'form', photo_usage: @photo_usage %>
+<% else %>
+  <div>
+    <p>Please authenticate before submitting photo usage form.</p>
+    <a href="/users/auth/cas" class="rvt-button rvt-button--primary">IU Login</a>
+  </div>
+<% end %>
