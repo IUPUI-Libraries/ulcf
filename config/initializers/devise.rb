@@ -260,12 +260,29 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :cas,
-                  host: 'cas.iu.edu',
-                  login_url: '/cas/login',
-                  service_validate_url: '/cas/serviceValidate',
-                  logout_url: '/cas/logout',
-                  ssl: true
+  # Old Configuration
+  # config.omniauth :cas,
+  #                 host: 'cas.iu.edu',
+  #                 login_url: '/cas/login',
+  #                 service_validate_url: '/cas/serviceValidate',
+  #                 logout_url: '/cas/logout',
+  #                 ssl: true
+  # IU Login 2.0
+  if Rails.env.development? || Rails.env.test?
+    config.omniauth :cas,
+                    :host => 'idp-stg.login.iu.edu',
+                    :login_url => '/idp/profile/cas/login',
+                    :service_validate_url => '/idp/profile/cas/serviceValidate',
+                    :logout_url => '/idp/profile/cas/logout',
+                    :ssl => true
+  else
+    config.omniauth :cas,
+                    :host => 'idp.login.iu.edu',
+                    :login_url => '/idp/profile/cas/login',
+                    :service_validate_url => '/idp/profile/cas/serviceValidate',
+                    :logout_url => '/idp/profile/cas/logout',
+                    :ssl => true
+  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
