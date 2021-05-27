@@ -42,6 +42,6 @@ class PhotoUsagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def photo_usage_params
-    params.require(:photo_usage).permit(:acknowledgement, :signature, photos: [])
+    params.require(:photo_usage).permit(:wikimedia_permission, :user_role_id, :school_id, :acknowledgement, :signature, :cv_upload, photos: [])
   end
 end

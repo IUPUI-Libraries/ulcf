@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_203242) do
+ActiveRecord::Schema.define(version: 2021_05_25_191122) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,7 +72,12 @@ ActiveRecord::Schema.define(version: 2020_12_02_203242) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "user_role_id", null: false
+    t.integer "school_id", null: false
+    t.boolean "wikimedia_permission"
+    t.index ["school_id"], name: "index_photo_usages_on_school_id"
     t.index ["user_id"], name: "index_photo_usages_on_user_id"
+    t.index ["user_role_id"], name: "index_photo_usages_on_user_role_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -81,7 +86,19 @@ ActiveRecord::Schema.define(version: 2020_12_02_203242) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -107,5 +124,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_203242) do
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
   add_foreign_key "covid_photos", "users"
+  add_foreign_key "photo_usages", "schools"
+  add_foreign_key "photo_usages", "user_roles"
   add_foreign_key "photo_usages", "users"
 end

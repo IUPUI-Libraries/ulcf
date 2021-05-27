@@ -16,24 +16,61 @@
        Photo Usage Permission
     </div>
     <div class="field rvt-box__body">
+      <fieldset class='rvt-p-bottom-md'>
+        <%= form.label :user_role %>
+        <%= form.collection_select :user_role_id, UserRole.all, :id, :name, include_blank: "Select Role..." %>
 
-      <div class="field rvt-m-top-md">
+        <%= form.label :school %>
+        <%= form.collection_select :school_id, School.all, :id, :name, include_blank: "Select School..." %>
+      </fieldset>
+
+      <fieldset class='rvt-p-bottom-md'>
+        <legend>Can we use the picture in your profile page to contribute it to Wikimedia Commons?</legend>
+        <ul class="rvt-plain-list">
+          <li>
+            <%= form.radio_button :wikimedia_permission, true, id: 'wikimedia_permission_yes' %>
+            <label for='wikimedia_permission_yes'>Yes</label>
+          </li>
+          <li>
+            <%= form.radio_button :wikimedia_permission, false, id: 'wikimedia_permission_no' %>
+            <label for='wikimedia_permission_no'>No</label>
+          </li>
+        </ul>
+        <p>
+          If you prefer to share a different pictures,
+          click on the "Choose Files" button to upload them
+        </p>
         <%= form.file_field :photos, accept: 'image/png,image/gif,image/jpeg,image/jpg', multiple: true %>
-      </div>
+      </fieldset>
 
-      <div class="field rvt-m-top-md">
+      <fieldset class="rvt-p-bottom-md">
+        <p>
+          Upload the latest version of your CV for us to improve your scholarly profile
+        </p>
+        <%= form.file_field :cv_upload, accept: 'application/pdf', multiple: false %>
+      </fieldset>
+
+      <fieldset class='rvt-p-bottom-md'>
+        <p>
+          In order to use your image for this project it must have a
+          Creative Commons Attribution-Share Alike License (CC-BY-SA).
+          By checking this box I grant this image a CC-BY-SA license.
+          For more information on Creative Commons and the types of licenses,
+          please visit the
+          <a href="">
+            Creative Commons website
+          </a>.
+        </p>
         <ul class="rvt-inline-list">
           <li class="rvt-checkbox-wrapper">
             <%= form.check_box :acknowledgement %>
             <%= form.label :acknowledgement %>
           </li>
         </ul>
-      </div>
-
-      <div class="field rvt-m-top-md">
         <%= form.label :signature %>
         <%= form.text_field :signature %>
-      </div>
+      </fieldset>
+
 
       <div class="actions rvt-m-top-md">
         <%= form.submit "Submit", class: "rvt-button" %>
