@@ -5,6 +5,6 @@
 <% else %>
   <div>
     <p>Please authenticate before submitting photo usage form.</p>
-    <a href="/users/auth/cas" class="rvt-button rvt-button--primary">IU Login</a>
+    <%= link_to "IU Login", user_cas_omniauth_authorize_path, class: "rvt-button rvt-button--primary", method: :post %>
   </div>
 <% end %>
