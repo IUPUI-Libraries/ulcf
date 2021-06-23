@@ -21,7 +21,7 @@
         <%= form.collection_select :user_role_id, UserRole.all, :id, :name, include_blank: "Select Role..." %>
 
         <%= form.label :school %>
-        <%= form.collection_select :school_id, School.all, :id, :name, include_blank: "Select School..." %>
+        <%= form.collection_select :school_id, School.all.order(:name), :id, :name, include_blank: "Select School/Unit..." %>
       </fieldset>
 
       <fieldset class='rvt-p-bottom-md'>
