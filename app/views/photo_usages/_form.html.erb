@@ -47,7 +47,13 @@
         <p>
           Upload the latest version of your CV for us to improve your scholarly profile
         </p>
-        <%= form.file_field :cv_upload, accept: 'application/pdf', multiple: false %>
+        <%= form.file_field :cv_upload,
+              accept: 'application/pdf,
+                       application/msword,
+                       application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                       application/vnd.oasis.opendocument.text,
+                       text/plain',
+              multiple: false %>
       </fieldset>
 
       <fieldset class='rvt-p-bottom-md'>
