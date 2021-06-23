@@ -25,7 +25,7 @@
       </fieldset>
 
       <fieldset class='rvt-p-bottom-md'>
-        <legend>Can we use the picture in your profile page to contribute it to Wikimedia Commons?</legend>
+        <legend class='required'>Can we use the picture in your profile page to contribute it to Wikimedia Commons?</legend>
         <ul class="rvt-plain-list">
           <li>
             <%= form.radio_button :wikimedia_permission, true, id: 'wikimedia_permission_yes' %>
@@ -64,17 +64,20 @@
         <ul class="rvt-inline-list">
           <li class="rvt-checkbox-wrapper">
             <%= form.check_box :acknowledgement %>
-            <%= form.label :acknowledgement %>
+            <%= form.label :acknowledgement, class: 'required'%>
           </li>
         </ul>
-        <%= form.label :signature %>
+        <%= form.label :signature, class: 'required' %>
         <%= form.text_field :signature %>
       </fieldset>
-
-
-      <div class="actions rvt-m-top-md">
-        <%= form.submit "Submit", class: "rvt-button" %>
-      </div>
     </div>
+  </div>
+
+  <div>
+    <p><strong>* Required Fields</strong></p>
+  </div>
+
+  <div class="actions rvt-m-top-md">
+    <%= form.submit "Submit", class: "rvt-button" %>
   </div>
 <% end %>
