@@ -1,2 +1,28 @@
-<h1>Photo Usage Permission</h1>
+<h1>Photo Usage and CV Form</h1>
 <h2><%= "Submission ID: #{@photo_usage.id}" %></h2>
+
+<table id="photo-usage-table" class="rvt-table-stripes">
+  <caption class="sr-only">Photo Usage and CV Information</caption>
+  <tbody>
+    <tr>
+      <th><%= I18n.t 'helpers.label.photo_usage.user' %></th>
+      <td><%= @photo_usage.user.uid %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.photo_usage.user_role' %></th>
+      <td><%= @photo_usage.user_role.name %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.photo_usage.school' %></th>
+      <td><%= @photo_usage.school.name %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.photo_usage.acknowledgement' %></th>
+      <td><%= @photo_usage.acknowledgement %></td>
+    </tr>
+    <tr>
+      <th><%= I18n.t 'helpers.label.photo_usage.signature' %></th>
+      <td><%= @photo_usage.signature %></td>
+    </tr>
+  </tbody>
+</table>

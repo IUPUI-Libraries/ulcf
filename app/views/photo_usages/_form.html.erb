@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'photo_usages' %>
 <%= form_with(model: photo_usage, local: true) do |form| %>
   <% if photo_usage.errors.any? %>
     <div id="error_explanation">
@@ -17,10 +18,10 @@
     </div>
     <div class="field rvt-box__body">
       <fieldset class='rvt-p-bottom-md'>
-        <%= form.label :user_role %>
+        <%= form.label :user_role, class: 'required' %>
         <%= form.collection_select :user_role_id, UserRole.all, :id, :name, include_blank: "Select Role..." %>
 
-        <%= form.label :school %>
+        <%= form.label :school, class: 'required' %>
         <%= form.collection_select :school_id, School.all.order(:name), :id, :name, include_blank: "Select School/Unit..." %>
       </fieldset>
 
@@ -36,11 +37,13 @@
             <label for='wikimedia_permission_no'>No</label>
           </li>
         </ul>
-        <p>
-          If you prefer to share a different pictures,
-          click on the "Choose Files" button to upload them
-        </p>
-        <%= form.file_field :photos, accept: 'image/png,image/gif,image/jpeg,image/jpg', multiple: true %>
+        <div id='alt_photo' style="display:none;" >
+          <p>
+            If you prefer to share a different picture,
+            click on the "Choose File" button to upload it
+          </p>
+          <%= form.file_field :photos, accept: 'image/png,image/gif,image/jpeg,image/jpg', multiple: true %>
+        </div>
       </fieldset>
 
       <fieldset class="rvt-p-bottom-md">
@@ -70,7 +73,7 @@
         <ul class="rvt-inline-list">
           <li class="rvt-checkbox-wrapper">
             <%= form.check_box :acknowledgement %>
-            <%= form.label :acknowledgement, class: 'required'%>
+            <%= form.label :acknowledgement, class: 'required' %>
           </li>
         </ul>
         <%= form.label :signature, class: 'required' %>

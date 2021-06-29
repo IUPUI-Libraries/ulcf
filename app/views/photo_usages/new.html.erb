@@ -1,10 +1,10 @@
-<h1 class="rvt-m-top-md">Photo Usage Submission Form</h1>
+<h1 class="rvt-m-top-md">Photo Usage and CV Form</h1>
 
 <% if current_user %>
   <%= render 'form', photo_usage: @photo_usage %>
 <% else %>
   <div>
-    <p>Please authenticate before submitting photo usage form.</p>
+    <p>Please authenticate before submitting a photo usage and cv form.</p>
     <%= link_to "IU Login", user_cas_omniauth_authorize_path, class: "rvt-button rvt-button--primary", method: :post %>
   </div>
 <% end %>

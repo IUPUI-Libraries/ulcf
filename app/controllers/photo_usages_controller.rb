@@ -2,9 +2,14 @@ class PhotoUsagesController < ApplicationController
   before_action :set_photo_usage, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :new]
 
+  include Pagy::Backend
+
   # GET /photo_usages
   # GET /photo_usages.csv
   def index
+    @q = PhotoUsage.ransack(params[:q])
+    @all_photo_usages = @q.result
+    @pagy, @photo_usages = pagy(@all_photo_usages)
   end
 
   # GET /photo_usage/1
@@ -16,6 +21,11 @@ class PhotoUsagesController < ApplicationController
   # GET /photo_usage/new
   def new
     @photo_usage = PhotoUsage.new
+    authorize @photo_usage
+  end
+
+  # GET /covid_photos/1/edit
+  def edit
     authorize @photo_usage
   end
 
@@ -42,6 +52,6 @@ class PhotoUsagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def photo_usage_params
-    params.require(:photo_usage).permit(:wikimedia_permission, :user_role_id, :school_id, :acknowledgement, :signature, :cv_upload, photos: [])
+    params.require(:photo_usage).permit(:wikimedia_permission, :user_role_id, :acknowledgement, :signature, :cv_upload, :school_id, photos: [])
   end
 end
