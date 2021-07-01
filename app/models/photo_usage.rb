@@ -5,7 +5,7 @@ class PhotoUsage < ApplicationRecord
   belongs_to :user_role
   belongs_to :school
 
-  validates :acknowledgement, :signature, presence: true
-  validates :wikimedia_permission, inclusion: [true, false]
+  validates :signature, presence: true
+  validates :acknowledgement, acceptance: true
 
 end

@@ -1,5 +1,5 @@
 <%= javascript_pack_tag 'covid_photos' %>
-<%= form_with(model: covid_photo, local: true) do |form| %>
+<%= form_with(model: covid_photo, local: true, validate: true) do |form| %>
   <% if covid_photo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(covid_photo.errors.count, "error") %> prohibited this covid_photo from being saved:</h2>
@@ -74,7 +74,7 @@
     </div>
     <div class="rvt-box__body">
       <div class="rvt-file" data-upload="covid_photo_photo">
-        <%= form.file_field :photo,  'aria-describedby': 'file-description' %>
+        <%= form.file_field :photos,  'aria-describedby': 'file-description' %>
         <label for="covid_photo_photo" class="rvt-button">
             <span>Upload a file*</span>
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
