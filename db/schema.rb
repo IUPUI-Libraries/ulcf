@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_191122) do
+ActiveRecord::Schema.define(version: 2021_07_02_191900) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_191122) do
     t.integer "user_id"
     t.integer "user_role_id", null: false
     t.integer "school_id", null: false
-    t.boolean "wikimedia_permission"
+    t.string "wikimedia_permission"
     t.index ["school_id"], name: "index_photo_usages_on_school_id"
     t.index ["user_id"], name: "index_photo_usages_on_user_id"
     t.index ["user_role_id"], name: "index_photo_usages_on_user_role_id"

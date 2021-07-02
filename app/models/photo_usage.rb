@@ -1,5 +1,5 @@
 class PhotoUsage < ApplicationRecord
-  has_many_attached :photos
+  has_one_attached :photo
   has_one_attached :cv_upload
   belongs_to :user
   belongs_to :user_role
@@ -7,5 +7,10 @@ class PhotoUsage < ApplicationRecord
 
   validates :signature, presence: true
   validates :acknowledgement, acceptance: true
+  validates :photo, attached: true, if: :alt_photo?
+
+  def alt_photo?
+    wikimedia_permission == "no"
+  end
 
 end

@@ -60,6 +60,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Additional Gems
+gem 'active_storage_validations', '~> 0.9.5'
 gem 'client_side_validations'
 gem 'devise'
 gem 'font-awesome-rails'
