@@ -14,3 +14,7 @@
  *= require rivet.min.css
  *= require_self
  */
+
+h1 {
+  font-weight: bold;
+}
