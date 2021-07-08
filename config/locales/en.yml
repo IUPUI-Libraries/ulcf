@@ -44,6 +44,12 @@ en:
         other_topic: "Other Topic"
         submit_name: "Name"
         submit_email: "Email"
+      photo_usage:
+        user: "User ID"
+        user_role: "Role"
+        school: "School / Unit"
+        acknowledgement: "Acknowledgement"
+        signature: "Signature"
     placeholder:
       covid_photo:
         location: "City, County, State, Country"

@@ -1,0 +1,49 @@
+<div id="photo-usage-filters">
+  <div class="rvt-box">
+    <div class="rvt-box__header">
+      Filters
+    </div>
+    <div class="rvt-box__body">
+      <%= search_form_for @q do |f| %>
+      <div class="rvt-grid">
+        <div class="rvt-grid__item-md">
+          <%= f.label 'Submitter' %>
+          <%= f.search_field :user_uid_eq %>
+        </div>
+        <div class="rvt-grid__item-md">
+          <%= f.label 'School/Unit' %>
+          <%= f.select :school_id_eq, options_from_collection_for_select(School.all.order(:name), 'id', 'name'), include_blank: true %>
+        </div>
+        <div class="rvt-grid__item">
+          <%= f.submit "Filter", class: "rvt-button rvt-m-top-md" %>
+          <%= link_to 'Reset', photo_usages_path, class: 'rvt-button rvt-button--secondary rvt-m-top-md' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Role</th>
+      <th>School/Unit</th>
+      <th>Wiki Permission</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photo_usages.each do |photo_usage| %>
+      <tr>
+        <td><%= photo_usage.user.uid %></td>
+        <td><%= photo_usage.user_role.name %></td>
+        <td><%= photo_usage.school.name %></td>
+        <td><%= photo_usage.wikimedia_permission %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Photo Usage and CV Form", new_photo_usage_path, class: "rvt-button rvt-button--primary" %>

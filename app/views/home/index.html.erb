@@ -3,10 +3,16 @@
   <p>Forms available:</p>
   <dl>
     <dt>
-      <a href="covid_photos" class="rvt-button rvt-button--primary">Covid Photo Collection</a>
+      <%= link_to "Covid Photo Collection", covid_photos_path, class: "rvt-button rvt-button--primary" %>
     </dt>
     <dd class="rvt-p-all-md">
       Form for submitting photos taken during the Covid-19 epidemic.
+    </dd>
+    <dt>
+      <%= link_to "Photo Usage and CV Form", photo_usages_path, class: "rvt-button rvt-button--primary" %>
+    </dt>
+    <dd class="rvt-p-all-md">
+      Form for uploading and allowing Library to use profile photos.
     </dd>
   </dl>
 </div>

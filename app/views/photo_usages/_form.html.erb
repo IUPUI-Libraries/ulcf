@@ -1,0 +1,132 @@
+<%= javascript_pack_tag 'photo_usages' %>
+<%= form_with(model: photo_usage, local: true, validate: true, id: 'photo_usage_form') do |form| %>
+  <% if photo_usage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo_usage.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+        <% photo_usage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="rvt-box rvt-m-top-md">
+    <div class="rvt-box__header">
+       Photo Usage Permission
+    </div>
+    <div class="field rvt-box__body">
+      <fieldset class='rvt-p-bottom-md'>
+        <%= form.label :user_role, class: 'required' %>
+        <%= form.collection_select :user_role_id, UserRole.all, :id, :name, include_blank: "Select Role..." %>
+
+        <%= form.label :school, class: 'required' %>
+        <%= form.collection_select :school_id, School.all.order(:name), :id, :name, include_blank: "Select School/Unit..." %>
+      </fieldset>
+
+      <fieldset class='rvt-p-bottom-md'>
+        <legend class='required bold'>
+          Can we use the picture from your school or unit profile page to contribute it to
+          <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>?
+        </legend>
+        <ul class="rvt-plain-list">
+          <li>
+            <%= form.radio_button :wikimedia_permission, 'yes', id: 'wikimedia_permission_yes', checked: true %>
+            <label for='wikimedia_permission_yes'>Yes - use school/unit profile photo</label>
+          </li>
+          <li>
+            <%= form.radio_button :wikimedia_permission, 'no', id: 'wikimedia_permission_no' %>
+            <label for='wikimedia_permission_no'>No - I prefer to upload my own photo</label>
+          </li>
+        </ul>
+        <div id='alt_photo' <% if @photo_usage[:wikimedia_permission] != 'no' %>style="display:none;" <% end %>>
+          <p class="required bold">
+            If you prefer to share a different picture,
+            click on the "Upload a Photo" button to upload it
+          </p>
+
+          <div id='own_photo'>
+            <div class="rvt-file" data-upload="photo_usage_photo">
+              <%= form.file_field :photo, accept: 'image/png,image/gif,image/jpeg,image/jpg', 'aria-describedby': 'photo-file-description' %>
+              <label for="photo_usage_photo" class="rvt-button">
+                  <span>Upload a Photo</span>
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                      <path fill="currentColor" d="M10.41,1H3.5A1.3,1.3,0,0,0,2.2,2.3V13.7A1.3,1.3,0,0,0,3.5,15h9a1.3,1.3,0,0,0,1.3-1.3V4.39ZM11.8,5.21V6H9.25V3h.34ZM4.2,13V3h3V6.75A1.25,1.25,0,0,0,8.5,8h3.3v5Z"/>
+                  </svg>
+              </label>
+              <div class="rvt-file__preview" data-file-preview="photo_usage_photo" id="photo-file-description">
+                  No file selected
+              </div>
+            </div>
+            <div class="file-types">
+              Allowed file types: jpg, jpeg, png, gif
+            </div>
+            <div id='own_photo_message'>
+            </div>
+          </div>
+
+        </div>
+      </fieldset>
+
+      <fieldset class="rvt-p-bottom-md">
+        <p class="bold">
+          Upload the latest version of your CV for us to improve your scholarly profile
+        </p>
+
+        <div class="rvt-file" data-upload="photo_usage_cv_upload">
+          <%= form.file_field :cv_upload,
+                accept: 'application/pdf,
+                         application/msword,
+                         application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                         application/vnd.oasis.opendocument.text,
+                         text/plain',
+                multiple: false,
+                'aria-describedby': 'cv-upload-file-description' %>
+          <label for="photo_usage_cv_upload" class="rvt-button">
+              <span>Upload a CV</span>
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                  <path fill="currentColor" d="M10.41,1H3.5A1.3,1.3,0,0,0,2.2,2.3V13.7A1.3,1.3,0,0,0,3.5,15h9a1.3,1.3,0,0,0,1.3-1.3V4.39ZM11.8,5.21V6H9.25V3h.34ZM4.2,13V3h3V6.75A1.25,1.25,0,0,0,8.5,8h3.3v5Z"/>
+              </svg>
+          </label>
+          <div class="rvt-file__preview" data-file-preview="photo_usage_photos" id="cv-upload-file-description">
+              No file selected
+          </div>
+        </div>
+        <div class="file-types">
+          Allowed file types: pdf, doc, docx, odt, txt
+        </div>
+
+      </fieldset>
+
+      <fieldset class='rvt-p-bottom-md'>
+        <p class="bold">
+          In order to use your image for this project it must have a
+          Creative Commons Attribution-Share Alike License (CC-BY-SA).
+          By checking this box I grant this image a CC-BY-SA license.
+          For more information on Creative Commons and the types of licenses,
+          please visit the
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank">
+            Creative Commons website
+          </a>.
+        </p>
+        <ul class="rvt-inline-list">
+          <li class="rvt-checkbox-wrapper">
+            <%= form.check_box :acknowledgement, validate: true %>
+            <%= form.label :acknowledgement, class: 'required' %>
+          </li>
+        </ul>
+        <%= form.label :signature, class: 'required' %>
+        <%= form.text_field :signature %>
+      </fieldset>
+    </div>
+  </div>
+
+  <div>
+    <p><strong>* Required Fields</strong></p>
+  </div>
+
+  <div class="actions rvt-m-top-md">
+    <%= form.submit "Submit", class: "rvt-button" %>
+  </div>
+<% end %>
