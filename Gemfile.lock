@@ -335,7 +335,7 @@ DEPENDENCIES
   net-ldap (~> 0.16.1)
   omniauth-cas
   pagy
-  puma (~> 4.3.7)
+  puma (~> 4.3)
   pundit
   rails (~> 6.0.2, >= 6.0.2.1)
   rails_admin (~> 2.0)
